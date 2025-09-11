@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vamsi Krishna | AI/ML Engineer Portfolio</title>
+  <meta name="description" content="Portfolio of Pratti Veera Venkata Vamsi Krishna Murthy – B.Tech CSE (AI & ML). Projects in ML, NLP, data science, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --panel: #111418;
+      --text: #e8eef6;
+      --muted: #a8b3c7;
+      --brand: #7c5cff; /* accent */
+      --brand-2: #00e0a4; /* secondary accent */
+      --ring: rgba(124, 92, 255, 0.5);
+      --card: #0e1115;
+      --border: #1c2128;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+    .light {
+      --bg: #f7f9fc;
+      --panel: #ffffff;
+      --text: #0e1621;
+      --muted: #425a74;
+      --brand: #5b3df5;
+      --brand-2: #0bb884;
+      --ring: rgba(91, 61, 245, 0.35);
+      --card: #ffffff;
+      --border: #e8eef6;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 100% -10%, rgba(124,92,255,0.15), transparent 40%),
+                  radial-gradient(900px 600px at -10% 100%, rgba(0,224,164,0.14), transparent 40%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      letter-spacing: 0.2px;
+      scroll-behavior: smooth;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout */
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: linear-gradient(180deg, rgba(11,13,16,0.8), rgba(11,13,16,0.5) 40%, transparent);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; }
+    .badge { padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 12px; }
+    .nav a { margin-left: 18px; font-weight: 600; color: var(--text); opacity: 0.85; }
+    .nav a:hover { opacity: 1; }
+
+    .theme-toggle {
+      border: 1px solid var(--border); background: var(--panel); color: var(--text);
+      border-radius: 12px; padding: 8px 12px; cursor: pointer; font-weight: 600;
+      box-shadow: var(--shadow);
+    }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; padding: 64px 0 36px; align-items: center; }
+    .title { font-size: clamp(28px, 6vw, 55px); line-height: 1.05; margin: 8px 0 12px; font-weight: 900; }
+    .subtitle { font-size: clamp(16px, 2vw, 19px); color: var(--muted); }
+
+    .pillbar { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 28px; }
+    .pill {
+      display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border);
+      padding:8px 12px; border-radius:999px; background: linear-gradient(180deg, var(--panel), var(--card));
+      box-shadow: var(--shadow); font-weight: 600; font-size: 13px; color: var(--text);
+    }
+
+    .cta { display:flex; gap:12px; flex-wrap: wrap; }
+    .btn {
+      appearance: none; border: none; cursor: pointer; font-weight: 800;
+      padding: 12px 16px; border-radius: 14px; letter-spacing: 0.3px;
+      box-shadow: var(--shadow); transition: transform .12s ease, box-shadow .2s ease;
+    }
+    .btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: white; }
+    .btn-ghost { background: var(--panel); color: var(--text); border:1px solid var(--border); }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 24px 60px rgba(0,0,0,0.25); }
+
+    .hero-card {
+      border: 1px solid var(--border); background: radial-gradient(400px 200px at 80% 20%, rgba(124,92,255,0.1), transparent 60%), var(--panel);
+      border-radius: 18px; padding: 24px; box-shadow: var(--shadow);
+    }
+    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+    .stat { border:1px solid var(--border); border-radius: 14px; padding: 16px; background: var(--card); }
+    .stat b { font-size: 22px; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+    /* Sections */
+    section { padding: 40px 0; }
+    .section-title { font-size: 28px; margin: 0 0 14px; }
+    .section-sub { color: var(--muted); margin: 0 0 24px; }
+
+    .card { border:1px solid var(--border); border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); }
+    .card-inner { padding: 18px; }
+
+    /* Skills */
+    .chipset { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip { padding: 8px 12px; background: var(--card); border:1px solid var(--border); border-radius: 999px; font-weight: 600; }
+
+    .skill-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .skill h4 { margin: 0 0 8px; }
+    .bar { height: 10px; border-radius: 999px; background: #2a3240; position: relative; overflow: hidden; border: 1px solid var(--border); }
+    .bar > span { position:absolute; inset:0; width: 0; background: linear-gradient(90deg, var(--brand), var(--brand-2)); transition: width 1s ease; }
+
+    /* Timeline */
+    .timeline { border-left: 2px dashed var(--border); padding-left: 16px; display: grid; gap: 16px; }
+    .timeline .item { position: relative; }
+    .timeline .item::before { content: ""; position:absolute; left: -10px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 4px var(--ring); }
+    .item h4 { margin: 0; }
+    .item .meta { color: var(--muted); font-weight: 600; margin: 2px 0 8px; }
+
+    /* Projects */
+    .filters { display:flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+    .filter { border:1px solid var(--border); background: var(--card); padding: 8px 12px; border-radius: 10px; cursor: pointer; font-weight: 700; }
+    .filter.active { outline: 2px solid var(--ring); }
+
+    .project-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .project { overflow: clip; }
+    .project .thumb { height: 160px; background: linear-gradient(135deg, rgba(124,92,255,0.15), rgba(0,224,164,0.15)); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-weight:900; font-size: 42px; letter-spacing: 3px; color: var(--text); opacity: 0.6; }
+    .project h4 { margin: 12px 0 6px; }
+    .project p { color: var(--muted); margin: 0 0 12px; }
+    .tagset { display:flex; gap: 8px; flex-wrap: wrap; }
+    .tag { padding: 6px 10px; border:1px solid var(--border); border-radius: 999px; background: var(--card); font-weight: 700; font-size: 12px; }
+
+    /* Contact */
+    form { display:grid; gap: 10px; }
+    input, textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border:1px solid var(--border); background: var(--card); color: var(--text); }
+    textarea { min-height: 120px; resize: vertical; }
+    .inline { display:flex; gap: 10px; }
+
+    footer { padding: 30px 0 50px; color: var(--muted); text-align: center; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+      .skill-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.27 5.82 22 7 14.15l-5-4.88 6.91-1.01L12 2z" stroke="currentColor"/>
+        </svg>
+        <span>Vamsi Krishna • <span class="badge">AI/ML</span></span>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌗</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div>
+        <p class="badge mono">B.Tech CSE (AIML) • 2022–2026</p>
+        <h1 class="title">
+          Hi, I'm <span style="background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Pratti Veera Venkata Vamsi Krishna Murthy</span>
+        </h1>
+        <p class="subtitle" id="typewriter">I build intelligent systems — ML models, NLP pipelines, and data-driven apps.</p>
+
+        <div class="pillbar">
+          <span class="pill">📍 India</span>
+          <button class="pill" id="copyEmail" title="Copy email to clipboard">📧 vamsikrishnaprathi@gmail.com</button>
+          <a class="pill" href="tel:+919515407083">✆ +91 95154 07083</a>
+          <a class="pill" href="https://github.com/vamsi-3322" target="_blank" rel="noreferrer">💻 GitHub</a>
+          <a class="pill" href="https://www.linkedin.com/in/vamsi-krishna-pratti" target="_blank" rel="noreferrer">🔗 LinkedIn</a>
+        </div>
+
+        <div class="cta">
+          <a class="btn btn-primary" href="./resume.docx" download>⬇️ Download Résumé</a>
+          <a class="btn btn-ghost" href="#projects">View Projects</a>
+        </div>
+      </div>
+
+      <aside class="hero-card card">
+        <div class="card-inner">
+          <h3 style="margin:0 0 8px">At a Glance</h3>
+          <div class="grid-2">
+            <div class="stat"><b>8.55</b><div class="muted">CGPA</div></div>
+            <div class="stat"><b>10+</b><div class="muted">ML/NLP Algos</div></div>
+            <div class="stat"><b>4</b><div class="muted">Certifications</div></div>
+            <div class="stat"><b>2</b><div class="muted">Internships</div></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <p class="section-sub">Highly motivated and detail‑oriented computer science student with a passion for building reliable ML systems and learning fast. I enjoy transforming raw datasets into useful insights and deployable models.</p>
+      <div class="chipset">
+        <span class="chip">Problem Solving</span>
+        <span class="chip">Teamwork</span>
+        <span class="chip">Time Management</span>
+        <span class="chip">Leadership</span>
+        <span class="chip">Analytical Thinking</span>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-sub">Languages, tools & frameworks I use.</p>
+      <div class="skill-grid">
+        <div class="skill card">
+          <div class="card-inner">
+            <h4>Languages</h4>
+            <div class="chipset">
+              <span class="chip">Python</span>
+              <span class="chip">C</span>
+              <span class="chip">C#</span>
+              <span class="chip">SQL</span>
+            </div>
+            <div class="bar" data-value="88"><span></span></div>
+          </div>
+        </div>
+        <div class="skill card">
+          <div class="card-inner">
+            <h4>AI/ML & Data</h4>
+            <div class="chipset">
+              <span class="chip">Scikit‑learn</span>
+              <span class="chip">Pandas</span>
+              <span class="chip">NumPy</span>
+              <span class="chip">Matplotlib</span>
+              <span class="chip">Data Preprocessing</span>
+              <span class="chip">NLP</span>
+              <span class="chip">Classification/Regression</span>
+            </div>
+            <div class="bar" data-value="84"><span></span></div>
+          </div>
+        </div>
+        <div class="skill card">
+          <div class="card-inner">
+            <h4>Web & Databases</h4>
+            <div class="chipset">
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+              <span class="chip">MongoDB</span>
+              <span class="chip">SQL</span>
+            </div>
+            <div class="bar" data-value="75"><span></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-sub">Selected work in ML & NLP.</p>
+
+      <div class="filters">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="ml">ML</button>
+        <button class="filter" data-filter="nlp">NLP</button>
+        <button class="filter" data-filter="data">Data</button>
+      </div>
+
+      <div class="project-grid" id="projectGrid">
+        <!-- Wine Quality Prediction -->
+        <article class="project card" data-tags="ml data">
+          <div class="thumb">WINE</div>
+          <div class="card-inner">
+            <h4>Wine Quality Prediction</h4>
+            <p>Built models to classify and predict wine quality from physicochemical features; compared Random Forest, SVM and Linear Regression with cross‑validation.</p>
+            <div class="tagset">
+              <span class="tag">scikit‑learn</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Regression</span>
+              <span class="tag">Classification</span>
+            </div>
+            <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn btn-ghost" href="https://github.com/vamsi-3322" target="_blank" rel="noreferrer">Source</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Fake News Detection -->
+        <article class="project card" data-tags="nlp ml">
+          <div class="thumb">NLP</div>
+          <div class="card-inner">
+            <h4>Fake News Detection</h4>
+            <p>Implemented a text classification pipeline with cleaning, vectorization, and models like Logistic Regression & Naive Bayes; improved interpretability via correlation analysis.</p>
+            <div class="tagset">
+              <span class="tag">NLP</span>
+              <span class="tag">Naive Bayes</span>
+              <span class="tag">LogReg</span>
+              <span class="tag">TF‑IDF</span>
+            </div>
+            <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn btn-ghost" href="https://github.com/vamsi-3322" target="_blank" rel="noreferrer">Source</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Placeholder for future projects -->
+        <article class="project card" data-tags="ml">
+          <div class="thumb">CV</div>
+          <div class="card-inner">
+            <h4>Image Classifier (Coming Soon)</h4>
+            <p>Deep learning CNN pipeline for multi‑class image classification with augmentation and evaluation dashboard.</p>
+            <div class="tagset">
+              <span class="tag">CNN</span>
+              <span class="tag">Keras</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project card" data-tags="data">
+          <div class="thumb">BI</div>
+          <div class="card-inner">
+            <h4>Interactive Analytics (Coming Soon)</h4>
+            <p>Exploratory data analysis with interactive dashboards and reproducible notebooks.</p>
+            <div class="tagset">
+              <span class="tag">EDA</span>
+              <span class="tag">Matplotlib</span>
+              <span class="tag">Pandas</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        <div class="item card">
+          <div class="card-inner">
+            <h4>Artificial Intelligence Intern – SkillDzire (APSCHE)</h4>
+            <div class="meta">Hands‑on with ML/DL concepts, preprocessing; worked on classification, regression, and prediction tasks using Python (NumPy, Pandas, scikit‑learn).</div>
+            <ul>
+              <li>Developed end‑to‑end workflows from cleaning to model evaluation.</li>
+              <li>Collaborated on dataset selection and baseline modeling.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="item card">
+          <div class="card-inner">
+            <h4>Machine Learning Virtual Intern – SkillDzire</h4>
+            <div class="meta">Built supervised learning models and assisted in deploying ML solutions using Python and Pandas.</div>
+            <ul>
+              <li>Implemented pipelines with feature engineering and model selection.</li>
+              <li>Performed error analysis and reported metrics.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <div class="timeline">
+        <div class="item card">
+          <div class="card-inner">
+            <h4>Sasi Institute of Technology and Engineering — B.Tech in CSM (CSE‑AIML)</h4>
+            <div class="meta">2022 – 2026 • CGPA: 8.55</div>
+          </div>
+        </div>
+        <div class="item card">
+          <div class="card-inner">
+            <h4>Sasi Junior College — Intermediate (MPC)</h4>
+            <div class="meta">2020 – 2022 • Percentage: 89.9%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certs">
+      <h2 class="section-title">Certifications</h2>
+      <div class="chipset">
+        <span class="chip">Machine Learning – SkillDzire (APSCHE)</span>
+        <span class="chip">Artificial Intelligence – SkillDzire (APSCHE)</span>
+        <span class="chip">Python – Simplilearn</span>
+        <span class="chip">Python Projects – Great Learning</span>
+        <span class="chip">Big Data Hadoop – Udemy</span>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-sub">Have an opportunity or want to collaborate? Send a message:</p>
+      <form id="contactForm" class="card" onsubmit="return false">
+        <div class="card-inner">
+          <div class="inline">
+            <input id="name" placeholder="Your name" required />
+            <input id="email" type="email" placeholder="Your email" required />
+          </div>
+          <textarea id="message" placeholder="Your message" required></textarea>
+          <div class="inline">
+            <button class="btn btn-primary" id="sendBtn">Send Message</button>
+            <button class="btn btn-ghost" type="reset">Reset</button>
+          </div>
+          <p id="formStatus" class="mono" style="color:var(--muted);"></p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:8px;">
+        <a href="mailto:vamsikrishnaprathi@gmail.com">Email</a>
+        <a href="https://github.com/vamsi-3322" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/vamsi-krishna-pratti" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+      <small>© <span id="year"></span> Vamsi Krishna • Built with vanilla HTML/CSS/JS</small>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const theme = localStorage.getItem('theme');
+    if (theme === 'light') document.body.classList.add('light');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+    });
+
+    // Animate skill bars on scroll
+    const bars = [...document.querySelectorAll('.bar')];
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const v = e.target.dataset.value || 70;
+          e.target.querySelector('span').style.width = v + '%';
+        }
+      });
+    }, { threshold: 0.4 });
+    bars.forEach(b => io.observe(b));
+
+    // Simple typewriter effect for subtitle
+    (function typewriter(){
+      const el = document.getElementById('typewriter');
+      const phrases = [
+        'I build intelligent systems — ML models, NLP pipelines, and data-driven apps.',
+        'Passionate about data preprocessing, model evaluation, and deployment.',
+        'Looking for AI/ML internships & fresher roles.'
+      ];
+      let i=0, j=0, del=false;
+      function tick(){
+        const p = phrases[i];
+        el.textContent = p.slice(0, j) + (j < p.length && !del ? '|' : '');
+        if (!del && j < p.length) { j++; }
+        else if (!del && j === p.length) { del = true; setTimeout(tick, 1300); return; }
+        else if (del && j > 0) { j--; }
+        else { del = false; i = (i+1)%phrases.length; }
+        setTimeout(tick, 24);
+      }
+      tick();
+    })();
+
+    // Copy email to clipboard
+    document.getElementById('copyEmail').addEventListener('click', async () => {
+      await navigator.clipboard.writeText('vamsikrishnaprathi@gmail.com');
+      const btn = document.getElementById('copyEmail');
+      const old = btn.textContent;
+      btn.textContent = '✅ Copied email!';
+      setTimeout(() => btn.textContent = old, 1500);
+    });
+
+    // Project filtering
+    const filters = document.querySelectorAll('.filter');
+    const cards = document.querySelectorAll('.project');
+    filters.forEach(f => f.addEventListener('click', () => {
+      filters.forEach(x => x.classList.remove('active'));
+      f.classList.add('active');
+      const t = f.dataset.filter;
+      cards.forEach(c => {
+        if (t === 'all' || c.dataset.tags.includes(t)) c.style.display = '';
+        else c.style.display = 'none';
+      });
+    }));
+
+    // Contact form (demo only)
+    document.getElementById('sendBtn').addEventListener('click', () => {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const status = document.getElementById('formStatus');
+      if (!name || !email || !message) {
+        status.textContent = 'Please fill all fields.';
+        return;
+      }
+      const mailto = `mailto:vamsikrishnaprathi@gmail.com?subject=Portfolio%20Message%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(message + '\n\nReply to: ' + email)}`;
+      window.location.href = mailto;
+      status.textContent = 'Opening your email app…';
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
